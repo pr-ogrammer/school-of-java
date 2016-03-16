@@ -41,7 +41,13 @@ public class FilteringApples {
         
         System.out.println(inventory.stream().filter(a -> a.getWeight() > 150).collect(Collectors.toList()));
 		System.out.println(inventory.stream().filter(a -> "red".equals(a.getColor())).collect(Collectors.toList()));
+		System.out.println(inventory.stream().filter(minWeight(80)).collect(Collectors.toList()));
+		System.out.println(inventory.stream().filter(minWeight(80).and((a -> "green".equals(a.getColor())))).collect(Collectors.toList()));
     }
+	
+	public static Predicate<Apple> minWeight(int minWeight) {
+		return a -> a.getWeight() > minWeight;
+	}
     
     public static List<Apple> filterGreenApples(List<Apple> apples) {
         List<Apple> greenApples = new ArrayList<>();
