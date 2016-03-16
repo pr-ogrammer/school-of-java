@@ -40,6 +40,7 @@ public class FilteringApples {
         System.out.println(weirdApples);     
         
         System.out.println(inventory.stream().filter(a -> a.getWeight() > 150).collect(Collectors.toList()));
+		System.out.println(inventory.stream().filter(a -> "red".equals(a.getColor())).collect(Collectors.toList()));
     }
     
     public static List<Apple> filterGreenApples(List<Apple> apples) {
