@@ -16,39 +16,40 @@ import java.util.stream.Collectors;
  * @author ruter
  */
 public class FilteringApples {
+
     public static void main(String[] args) {
-        
+
         List<Apple> inventory = Arrays.asList(
-            new Apple(80,"green"), 
+            new Apple(80, "green"),
             new Apple(155, "green"),
             new Apple(120, "red")
         );
-        
+
         List<Apple> greenApples = filterApples(inventory, FilteringApples::isGreenApple);
         System.out.println(greenApples);
-        
+
         List<Apple> heavyApples = filterApples(inventory, FilteringApples::isHeavyApple);
         System.out.println(heavyApples);
-        
+
         List<Apple> greenApples2 = filterApples(inventory, (Apple a) -> "green".equals(a.getColor()));
         System.out.println(greenApples2);
-        
+
         List<Apple> heavyApples2 = filterApples(inventory, (Apple a) -> a.getWeight() > 150);
         System.out.println(heavyApples2);
-        
+
         List<Apple> weirdApples = filterApples(inventory, (Apple a) -> a.getWeight() < 80 || "brown".equals(a.getColor()));
-        System.out.println(weirdApples);     
-        
+        System.out.println(weirdApples);
+
         System.out.println(inventory.stream().filter(a -> a.getWeight() > 150).collect(Collectors.toList()));
-		System.out.println(inventory.stream().filter(a -> "red".equals(a.getColor())).collect(Collectors.toList()));
-		System.out.println(inventory.stream().filter(minWeight(80)).collect(Collectors.toList()));
-		System.out.println(inventory.stream().filter(minWeight(80).and((a -> "green".equals(a.getColor())))).collect(Collectors.toList()));
+        System.out.println(inventory.stream().filter(a -> "red".equals(a.getColor())).collect(Collectors.toList()));
+        System.out.println(inventory.stream().filter(minWeight(80)).collect(Collectors.toList()));
+        System.out.println(inventory.stream().filter(minWeight(80).and((a -> "green".equals(a.getColor())))).collect(Collectors.toList()));
     }
-	
-	public static Predicate<Apple> minWeight(int minWeight) {
-		return a -> a.getWeight() > minWeight;
-	}
-    
+
+    public static Predicate<Apple> minWeight(int minWeight) {
+        return a -> a.getWeight() > minWeight;
+    }
+
     public static List<Apple> filterGreenApples(List<Apple> apples) {
         List<Apple> greenApples = new ArrayList<>();
         for (Apple apple : apples) {
@@ -58,7 +59,7 @@ public class FilteringApples {
         }
         return greenApples;
     }
-    
+
     public static List<Apple> filterHeavyApples(List<Apple> apples) {
         List<Apple> heavyApples = new ArrayList<>();
         for (Apple apple : apples) {
@@ -68,15 +69,15 @@ public class FilteringApples {
         }
         return heavyApples;
     }
-    
+
     public static boolean isGreenApple(Apple apple) {
         return "green".equals(apple.getColor());
     }
-    
+
     public static boolean isHeavyApple(Apple apple) {
         return apple.getWeight() > 150;
     }
-    
+
     public static List<Apple> filterApples(List<Apple> apples, Predicate<Apple> p) {
         List<Apple> result = new ArrayList<>();
         for (Apple apple : apples) {
@@ -85,13 +86,14 @@ public class FilteringApples {
             }
         }
         return result;
-    }                                 
-    
+    }
+
     public static class Apple {
+
         private int weight = 0;
         private String color = "";
 
-        public Apple(int weight, String color){
+        public Apple(int weight, String color) {
             this.weight = weight;
             this.color = color;
         }
@@ -113,10 +115,10 @@ public class FilteringApples {
         }
 
         public String toString() {
-            return "Apple{" +
-                   "color='" + color + '\'' +
-                   ", weight=" + weight +
-                   '}';
+            return "Apple{"
+                + "color='" + color + '\''
+                + ", weight=" + weight
+                + '}';
         }
     }
 }

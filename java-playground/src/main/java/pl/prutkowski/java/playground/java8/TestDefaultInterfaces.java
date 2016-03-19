@@ -14,18 +14,18 @@ import pl.prutkowski.java.playground.java8.domain.Car;
  */
 public class TestDefaultInterfaces implements Car, Boat {
 
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String[] args) {
-		TestDefaultInterfaces defaultInterfaces = new TestDefaultInterfaces();
-		defaultInterfaces.fuel();
-	}
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        TestDefaultInterfaces defaultInterfaces = new TestDefaultInterfaces();
+        defaultInterfaces.fuel();
+    }
 
-	@Override
-	public void fuel() {
-		Car.super.fuel();
-		Boat.super.fuel();
-		System.out.println("Override fuel method runs.");
-	}	
+    @Override
+    public void fuel() {
+        Car.super.fuel();
+        Boat.super.fuel();
+        System.out.println("Override fuel method runs.");
+    }
 }

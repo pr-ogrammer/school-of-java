@@ -10,7 +10,8 @@ package pl.prutkowski.java.playground.java8.domain;
  * @author ruter
  */
 public interface Boat {
-	default void fuel() {
-		System.out.println(Boat.class.getSimpleName() + ".fuel() method runs.");
-	}
+
+    default void fuel() {
+        System.out.println(Boat.class.getSimpleName() + ".fuel() method runs.");
+    }
 }
