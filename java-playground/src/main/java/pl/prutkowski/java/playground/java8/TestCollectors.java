@@ -6,7 +6,6 @@
 package pl.prutkowski.java.playground.java8;
 
 import java.util.Arrays;
-import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -62,10 +61,10 @@ public class TestCollectors {
         System.out.println("---------------------------------");
         
         Double averageLength = months
-            .stream()
-            .collect(
-                Collectors.averagingDouble(String::length)
-            ).doubleValue();
+			.stream()
+			.collect(
+					Collectors.averagingDouble(String::length)
+			);
         System.out.println("Average length: " + averageLength);
         System.out.println("---------------------------------");
         
