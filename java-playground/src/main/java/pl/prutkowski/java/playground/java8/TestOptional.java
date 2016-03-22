@@ -44,7 +44,14 @@ public class TestOptional {
 		System.out.println(s.map(TestOptional::getOutput));
 		System.out.println(s.map(TestOptional::getOutputOpt));
 		System.out.println(s.flatMap(TestOptional::getOutputOpt));
+		System.out.println(Optional.<String>empty().map(TestOptional::getOutput));
 		System.out.println("--------------- TEST map & flatMap ---------------");
+		
+		System.out.println(testOptional.lookupAddressById(1));
+		System.out.println(testOptional.lookupAddressByIdOptional(1));
+		
+		System.out.println(testOptional.lookupAddressById(0));
+		System.out.println(testOptional.lookupAddressByIdOptional(0));
 }
 
 	static Optional<String> getOutputOpt(String input) {
