@@ -49,9 +49,20 @@ public class TestOptional {
 		
 		System.out.println(testOptional.lookupAddressById(1));
 		System.out.println(testOptional.lookupAddressByIdOptional(1));
+		System.out.println("--------------------------------------------------");
+		
+		System.out.println(testOptional.lookupAddress(persons.get(1)));
+		System.out.println(testOptional.lookupAddressOptional(persons.get(1)));
+		System.out.println("--------------------------------------------------");
+		
+		Person newPerson = new Person(12, "test", Sex.MALE);
+		System.out.println(testOptional.lookupAddress(newPerson));
+		System.out.println(testOptional.lookupAddressOptional(newPerson));
+		System.out.println("--------------------------------------------------");
 		
 		System.out.println(testOptional.lookupAddressById(0));
 		System.out.println(testOptional.lookupAddressByIdOptional(0));
+		System.out.println("--------------------------------------------------");
 }
 
 	static Optional<String> getOutputOpt(String input) {
