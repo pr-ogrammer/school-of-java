@@ -52,12 +52,18 @@ public class TestOptional {
 		System.out.println("--------------------------------------------------");
 		
 		System.out.println(testOptional.lookupAddress(persons.get(1)));
-		System.out.println(testOptional.lookupAddressOptional(persons.get(1)));
+		Optional<String> opt = testOptional.lookupAddressOptional(persons.get(1));
+		System.out.println(opt);
+		System.out.println(opt.isPresent());
+		System.out.println(opt.filter(str -> str.length() > 0).map(String::length).orElse(0));
 		System.out.println("--------------------------------------------------");
 		
 		Person newPerson = new Person(12, "test", Sex.MALE);
 		System.out.println(testOptional.lookupAddress(newPerson));
-		System.out.println(testOptional.lookupAddressOptional(newPerson));
+		opt = testOptional.lookupAddressOptional(newPerson);
+		System.out.println(opt);
+		System.out.println(opt.isPresent());
+		System.out.println(opt.filter(str -> str.length() > 0).map(String::length).orElse(0));
 		System.out.println("--------------------------------------------------");
 		
 		System.out.println(testOptional.lookupAddressById(0));
