@@ -8,6 +8,7 @@ package pl.prutkowski.java.playground.java8;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -31,7 +32,30 @@ public class TestStream {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {                
+    public static void main(String[] args) {
+        String[] names = {"Sam", "Pamela", "Dave", "Pascal", "Erik"};
+        List<String> filteredNames = IntStream.range(0, names.length)
+                .filter(i -> (i+1) % 2 != 0)
+                .mapToObj(i -> names[i])
+                .collect(Collectors.toList());
+
+        System.out.println("Filtered names 1:");
+        System.out.println(filteredNames);
+        System.out.println("---------------------------------");
+
+        AtomicInteger index = new AtomicInteger();
+        filteredNames = Arrays.stream(names)
+                .filter(n -> {
+                    boolean result = index.incrementAndGet() % 2 != 0;
+                    return result;
+                })
+                .collect(Collectors.toList());
+
+        System.out.println("Filtered names 2:");
+        System.out.println(filteredNames);
+        System.out.println("---------------------------------");
+
+
         System.out.println("All months:");
         System.out.println(months);
         System.out.println("---------------------------------");
