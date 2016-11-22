@@ -5,12 +5,13 @@
  */
 package pl.prutkowski.java.playground.java8;
 
+import org.apache.commons.lang3.StringUtils;
+import pl.prutkowski.java.playground.java8.domain.ListCollector;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import org.apache.commons.lang3.StringUtils;
-import pl.prutkowski.java.playground.java8.domain.ListCollector;
 
 /**
  *
